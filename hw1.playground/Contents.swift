@@ -22,11 +22,11 @@ class Words {
 //: ### variables the same type? If not, why?
 
 
-//: [EXPLAIN YOUR ANSWER HERE]
+//: No, because the values passed in to the **init** function have an optional string type meaning that the value could be either a String or nill type whereas the instant variables are of String type.
 
 
 //: ## Q2: Variable Types and Function Types
-    func arePalindromes(_ words: [String]) -> Bool {
+    class func arePalindromes(_ words: [String]) -> Bool {
         let reversedWords = words.map() {String($0.characters.reversed())}
         let numElements = words.count
         
@@ -35,20 +35,22 @@ class Words {
                 return false
             }
         }
+        return true
     }
 //: ### Why does the compiler dislike the **for loop**? Fix it.
 //: ### What else is wrong with this function? You may have to refer to (but **not**
 //: ### change) the code at the very bottom. Debug the function.
 
 
-//: [EXPLAIN YOUR ANSWER HERE]
+//: There is nothing wrong with the **for loop**. The function must return a boolean value, so if it does not find a differing element in a word for elements in all indices, it should return true after the for loop. We are also calling arePalindroms with a class not an instance so we have to change the arePalindroms to a class function.
+    
 
 
 //: ## Q3: More Functions and Object Initialization
-    class func isAnagram() -> Bool {
-        var countLetters : [Character : Int] //Line X
+    func isAnagram() -> Bool {
+        var countLetters : [Character : Int] = [Character : Int]() //Line X
         var lenA = self.wordA.characters.count
-        var lenB = self.wordB.characters.count
+        let lenB = self.wordB.characters.count
         
         if lenA != lenB {
             return false
@@ -81,15 +83,15 @@ class Words {
             }
         }
         
-        return nil
+        return true //nil
     }
 //: ### What is the problem with declaring **countLetters** as we do in **Line X**,
 //: ### and then using it in **Line Y**? Fix it (by only changing **Line X**).
 //: ### What else is wrong with this function? You may have to refer to (but **not**
 //: ### change) the code at the very bottom. Debug the function.
 
-
-//: [EXPLAIN YOUR ANSWER HERE]
+    
+//: Need to initialize the **countLetters** dictionary. This function is called by an instance of a class when it is a class function. We have to fix this by changing it to a instance function by deleting "class". Also this function returns a boolean value so we must return true instead of nil.
     
     
 }
